@@ -2,32 +2,36 @@
 
 Standalone multi-agent reference system for reproducible machine-learning engineering from problem framing through evaluation and deployment handoff.
 
-## Repository map
+## Architecture
 
 ```text
-.github/workflows/tests.yml   CI on Python 3.10, 3.11, 3.12
-src/agents.py                 5 executable specialist agents
-src/state.py                  shared run state and trace
-src/gates.py                  fail-closed human handoff gate
-src/orchestrator.py           multi-agent coordinator
-src/system.py                 stable public API
-src/run.py                    CLI / offline example
-evals/evaluator.py            reference evaluation adapter
-examples/ml_case.json         reproducible fixture
-benchmarks/README.md          F31 benchmark contract
-docs/ARCHITECTURE.md          system architecture
-tests/                        behavior and architecture tests
-SECURITY.md                   security policy
-CONTRIBUTING.md               contribution standard
-CITATION.cff                  citation metadata
-CHANGELOG.md                  release history
-CODE_OF_CONDUCT.md            community conduct
-LICENSE                       MIT license
-pyproject.toml                package metadata
+src/
+├── agents/          executable ML specialist agents
+├── tools/           deterministic ML inspection/build helpers
+├── skills/          reusable ML engineering procedures
+├── memory/          experiment memory abstraction
+├── schemas/         canonical evidence contracts
+├── prompts/         engineering principles
+├── config/          reference configuration
+├── safety/          release/handoff policy
+├── observability/   trace summaries
+├── state.py         shared run state
+├── gates.py         fail-closed human handoff gate
+├── orchestrator.py  multi-agent coordinator
+├── system.py        public API
+└── run.py           offline CLI example
 ```
 
-## Multi-agent team
-Data Assessment Agent, Modeling Strategy Agent, Evaluation Agent, Reproducibility Auditor, Deployment Handoff Agent, and ML Engineering Orchestrator.
+### Agents
+Data Assessment Agent, Modeling Strategy Agent, Evaluation Agent, Reproducibility Auditor, Deployment Handoff Agent, coordinated by the ML Engineering Orchestrator.
+
+### Skills
+Data-readiness assessment, model-strategy selection, model evaluation, reproducibility audit, deployment handoff preparation.
+
+### Tools
+Dataset profiling, metric summarization, reproducibility fingerprinting.
+
+See `docs/AGENTS_TOOLS_SKILLS.md`.
 
 ```bash
 python -m src.run --example
