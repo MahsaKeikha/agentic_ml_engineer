@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "F31 Agentic ML Engineer"
+message: "If you use this reference implementation, please cite it."
+type: software
+authors:
+  - family-names: Keikha
+    given-names: Mahsa
+version: 0.2.0
+repository-code: "https://github.com/MahsaKeikha/agentic_ml_engineer"
+license: MIT
