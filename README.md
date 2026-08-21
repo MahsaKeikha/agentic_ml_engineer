@@ -11,7 +11,27 @@ Standalone multi-agent reference system for reproducible machine-learning engine
 - Deployment Handoff Agent
 - ML Engineering Orchestrator
 
-The agents coordinate through explicit shared state and produce a traceable engineering package rather than a single opaque recommendation.
+The **actual specialist agent implementations live in [`src/agents.py`](src/agents.py)**. Shared state, orchestration, evidence handling, and the human handoff gate live in [`src/system.py`](src/system.py). Agent-composition and workflow tests live under [`tests/`](tests/).
+
+## Architecture
+
+```text
+Dataset / task context
+   ↓
+Data Assessment
+   ↓
+Modeling Strategy
+   ↓
+Evaluation
+   ↓
+Reproducibility Audit
+   ↓
+Deployment Handoff
+   ↓
+ML Engineering Orchestrator / Human Gate
+```
+
+The agents coordinate through explicit shared state and produce a traceable engineering package rather than one opaque recommendation.
 
 ## Quick start
 
@@ -22,7 +42,7 @@ pytest -q
 
 ## Engineering gates
 
-A clean handoff requires supplied dataset context, target/metric definition, evaluation evidence, reproducibility metadata, and no unresolved conflicts. Human approval cannot erase missing evidence.
+A clean handoff requires dataset context, split strategy, target and metric definition, evaluation evidence, reproducibility metadata, deployment ownership, and no unresolved conflicts or risks. Human approval cannot erase missing evidence.
 
 ## Maturity
 
